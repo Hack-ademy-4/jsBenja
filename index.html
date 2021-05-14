@@ -73,7 +73,7 @@
 
 		function logFibo()
 		{
-			console.log("\n --- calculo de fibonacci de max=9 ---");
+			console.info("\n --- calculo de fibonacci de max=9 ---");
 			const max = 9,
 						fibo = [1,2];
 			for (let i = 2; i < max; i++)
@@ -83,8 +83,33 @@
 			console.log("Resultado", fibo.join());
 		}
 
+		function toBin(n)
+		{
+			return parseInt(n || 0).toString(2);
+		}
+
+		function printHour(mili)
+		{
+			let d = new Date(0),
+					segundos = "0",
+					minutos = "0",
+					hora = "0";
+
+			d.setUTCMilliseconds(mili);
+			segundos += d.getUTCSeconds().toString();
+			minutos += d.getUTCMinutes().toString();
+			hora += d.getUTCHours().toString();
+
+			return `${hora.substr(-2)}:${minutos.substr(-2)}:${segundos.substr(-2)}`;
+		}
+
 		js2();
 		logFibo();
+
+		console.log("\nEl binario de 33 es ", toBin(33), "el de 32 es ", toBin(32));
+		console.log("La hora de cien mill milisegundos son: ", printHour(100000));
+		console.log("La hora de 16 millones de milis son: ", printHour(16000000));
+		console.warn("FINAL DEL EJECCICIO 1 Y 2");
 	</script>
 </body>
 </html>
