@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Javascript leccion 1</title>
+	<script src="./console.js"></script>
+	<style>
+		#log-container {
+			overflow: auto;
+			height: 150px;
+			height: 90vh;
+		}
+
+		.log-warn { color: orange }
+		.log-error { color: red }
+		.log-info {
+			color: rgb(54, 64, 68);
+			font-style: italic;
+		}
+		.log-log { color: rgb(42, 41, 41) }
+
+		.log-warn, .log-error { font-weight: bold; }
+	</style>
+</head>
+<body>
+	<div id="log-container">
+		<pre id="log"></pre>
+	</div>
+	
+	
+	<script>
+		// a mi me gusta declarar todas la variables al principio de la funcion, generalmente.
+		let str1 = "Buenos dias mi nombre es",
+				str2 = "Nicola Gasparro y me gusta javascript"
+				strCapsule = `${str1} ${str2}`,
+				string = "Hey Tu, como te llamas. ¡Hey estoy hablando contigo!";
+
+		console.log("La suma entre los dos caracteres es", str1.length + str2.length);
+		console.info("\nEl encapsulado y su longitud");
+		console.log(`${strCapsule}; y la suma es ${str1.length + str2.length}`);
+
+		console.info("\nSumando diferentes tipos: 10 + '1'");
+		console.log("10 + '1' es ", 10 + "1"); // coercion implicit
+		console.log("El tipo de dato mostrado es ", typeof (10 +"1"));
+
+		console.info("\nSustituir cadenas con replace");
+		console.log("Original", string, "\nSutituida", string.replace("contigo", "el"));
+
+		// EJERCICIO 2 ----------------------------------------
+		function js2()
+		{
+			const result = n => {
+				const multiplos = {
+								"3": "java",
+								"5": "script"
+							};
+				let result = '';
+
+				for (const [m, str] of Object.entries(multiplos))
+				{
+					if (!(n % m))
+						result += str;
+				}
+				console.log(`El numero es ${n} - ${result}`);
+			};
+
+			console.info("\n\n ---- ejercicio número 2 ------");
+			for (let n = 0; n <= 100; n++)
+				result(n);
+		}
+
+		function logFibo()
+		{
+			console.log("\n --- calculo de fibonacci de max=9 ---");
+			const max = 9,
+						fibo = [1,2];
+			for (let i = 2; i < max; i++)
+			{
+				fibo.push(fibo[i-1] + fibo[i-2])
+			}
+			console.log("Resultado", fibo.join());
+		}
+
+		js2();
+		logFibo();
+	</script>
+</body>
+</html>
