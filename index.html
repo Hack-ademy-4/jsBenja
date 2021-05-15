@@ -37,7 +37,7 @@
 				strCapsule = `${str1} ${str2}`,
 				string = "Hey Tu, como te llamas. ¡Hey estoy hablando contigo!";
 
-		console.log("La suma entre los dos caracteres es", str1.length + str2.length);
+		console.log("La suma entre los dos Strings son", str1.length + str2.length);
 		console.info("\nEl encapsulado y su longitud");
 		console.log(`${strCapsule}; y la suma es ${str1.length + str2.length}`);
 
@@ -76,6 +76,7 @@
 			console.info("\n --- calculo de fibonacci de max=9 ---");
 			const max = 9,
 						fibo = [1,2];
+						
 			for (let i = 2; i < max; i++)
 			{
 				fibo.push(fibo[i-1] + fibo[i-2])
@@ -88,6 +89,8 @@
 			return parseInt(n || 0).toString(2);
 		}
 
+		// utilizando Date
+		/*
 		function printHour(mili)
 		{
 			let d = new Date(0),
@@ -101,6 +104,18 @@
 			hora += d.getUTCHours().toString();
 
 			return `${hora.substr(-2)}:${minutos.substr(-2)}:${segundos.substr(-2)}`;
+		}*/
+
+		// utilizando matematicas (maximo 99 horas)
+		// Puedo hacerlo que no tenga limintes en las horas, pero ahora solo se me ocurre recurrir a librerias que ya tengo echas
+		// y seria demasiado por ahora.... asi queda elegante...
+		function printHour(mili)
+		{
+			const seg = mili / 1000;
+					
+			return Array("seg","min","horas").map((item, index) => {
+				return (`0${Math.floor(seg / (60**index) % (item==="horas"? seg : 60))}`).substr(-2);
+			}).reverse().join(":");
 		}
 
 		js2();
