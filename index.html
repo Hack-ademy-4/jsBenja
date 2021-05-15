@@ -51,20 +51,21 @@
 		// EJERCICIO 2 ----------------------------------------
 		function js2()
 		{
-			const result = n => {
-				const multiplos = {
-								"3": "java",
-								"5": "script"
-							};
-				let result = '';
+			const
+				multiplos = {
+					"3": "java",
+					"5": "script"
+				},
+				result = n => {
+					let result = '';
 
-				for (const [m, str] of Object.entries(multiplos))
-				{
-					if (!(n % m))
-						result += str;
-				}
-				console.log(`El numero es ${n} - ${result}`);
-			};
+					for (const [m, str] of Object.entries(multiplos))
+					{
+						if (!(n % m))
+							result += str;
+					}
+					console.log(`El numero es ${n} - ${result}`);
+				};
 
 			console.info("\n\n ---- ejercicio número 2 ------");
 			for (let n = 0; n <= 100; n++)
@@ -78,9 +79,8 @@
 						fibo = [1,2];
 						
 			for (let i = 2; i < max; i++)
-			{
-				fibo.push(fibo[i-1] + fibo[i-2])
-			}
+				fibo.push(fibo[i-1] + fibo[i-2]);
+
 			console.log("Resultado", fibo.join());
 		}
 
