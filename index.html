@@ -171,6 +171,74 @@
 		console.log(arr_alea_2.reduce((acu, item) => acu += item));
 
 
+		console.info("\nsacar el mejor jugador de y si esta inscrito");
+		var data = [
+			{
+				name: "javi",
+				puntos: [ 19, 12, 4,9 ],
+				proximoTorneo: true
+			},
+			{
+				name: "Raquel",
+				puntos: [ 11, 20, 9, 12 ],
+				proximoTorneo: true
+			},
+			{
+				name: "Obed",
+				puntos: [ 5, 6, 10, 20 ],
+				proximoTorneo: true
+			},
+			{
+				name: "Benja",
+				puntos: [ 3, 15, 15 , 18 ],
+				proximoTorneo: true
+			},
+			{
+				name: "Maria",
+				puntos: [ 1, 20, 19, 10],
+				proximoTorneo: true
+			},
+			{
+				name: "Fran",
+				puntos: [ 2, 13, 10 , 5],
+				proximoTorneo: true
+			},
+			{
+				name: "Arturo",
+				puntos: [ 10, 10 , 4, 8],
+				proximoTorneo: true
+			},
+			{
+				name: "Nancy",
+				puntos: [ 18, 11, 6, 15],
+				proximoTorneo: true
+			},
+			{
+				name: "Gracia",
+				puntos: [ 19, 12, 4,9],
+				proximoTorneo: true
+			}
+		];
+
+		Array.prototype.media = function() {
+			return this.reduce((acu, item) => acu += ((parseInt(item) || 0) / this.length), 0);
+		};
+
+		Array.prototype.first = function() {
+			return this[0];
+		};
+
+		function mejorJugador([...d])
+		{
+			//return d.sort((a, b) => b.puntos.reduce((acu, item, i, self) => acu += (item / self.length), 0) - a.puntos.reduce((acu, item, i, self) => acu += (item / self.length), 0))
+			return d.sort((a, b) => b.puntos.media() - a.puntos.media())
+		}
+		
+		/* console.log(`El mejor jugador es ${mejorJugador(data).first().name} con una media de ${mejorJugador(data).first().puntos.media()} y ${mejorJugador(data).first().proximoTorneo? 'lo' : 'no lo'} veremos en el proximo torneo`); */
+		var elMejor = mejorJugador(data).first();
+
+		console.log(`El mejor jugador es ${elMejor.name} con una media de ${elMejor.puntos.media()} y ${elMejor.proximoTorneo? 'lo' : 'no lo'} veremos en el proximo torneo`);
+
 	</script>
 </body>
 </html>
