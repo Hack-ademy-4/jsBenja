@@ -7,9 +7,9 @@
 
 ### _Documentación hasta ahora_
  - Declaraciones:
- -- var _identify_: declaracion en el ambito general
- -- let _identify_: declaracion en el ambito exclusivo del bloque
- -- const _identify_: constante a la referencia
+    var _identify_: declaracion en el ambito general
+    let _identify_: declaracion en el ambito exclusivo del bloque
+    const _identify_: constante a la referencia y de ambito exclusivo
  - function(_arguments_) {
     ```
         // instrucciones

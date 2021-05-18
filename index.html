@@ -125,6 +125,52 @@
 		console.log("La hora de cien mill milisegundos son: ", printHour(100000));
 		console.log("La hora de 16 millones de milis son: ", printHour(16000000));
 		console.warn("FINAL DEL EJECCICIO 1 Y 2");
+
+		// Ejercicio numero 3 ---------------------
+		console.log("generando array de 10 slots con numeros aleatorios del 0 al 10 o el expecificado en el argumento");
+		function generaArr(max = 10) {
+			const arr = [],
+						inserta = (num) => {
+							if (arr.indexOf(num) < 0)
+								arr.push(num);
+						};
+
+			while (arr.length < 10)
+			{
+				inserta(Math.floor(Math.random() * max));
+			}
+
+			return arr;
+		}
+		var arr_alea = generaArr(),
+				arr_alea_2;
+
+		console.log("El reaultado del array con 10 numeros aleatorios del 1 al 10 (osea que estan los 10 numeros) es", arr_alea.join(" "));
+		console.info("\nVamos a mostrar los numeros pares");
+		arr_alea.forEach(item => console.log(`El numero ${item} es ${item % 2? 'impar' : 'par'}\n`));
+
+		arr_alea_2 = [...arr_alea, ...generaArr()];
+		console.info("Generando nueva copia de la primera array mas otros 10 numeros aleatorios");
+		console.log(arr_alea_2);
+
+		console.info("Filtrando los numeros mayores de 5 y menores de 50");
+		console.log(arr_alea_2.filter(item => (item > 5 && item < 50)));
+
+		console.info("Sumando sus valores");
+		console.log(arr_alea_2.reduce((acu, item) => acu += item));
+
+		console.info("\nVolvemos a hacer una copia de la primera array y le añadimos otros 10 numeros aleatorios, pero esta vez del 0 al 50 y repetimos...\n");
+		arr_alea_2 = [...arr_alea, ...generaArr(50)];
+		console.info("Generando nueva copia de la primera array mas otros 10 numeros aleatorios");
+		console.log(arr_alea_2);
+
+		console.info("Filtrando los numeros mayores de 5 y menores de 50");
+		console.log(arr_alea_2.filter(item => (item > 5 && item < 50)));
+
+		console.info("Sumando sus valores");
+		console.log(arr_alea_2.reduce((acu, item) => acu += item));
+
+
 	</script>
 </body>
 </html>
