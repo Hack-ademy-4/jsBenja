@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Dom manipulation con JS</title>
+		<style>
+			nav {
+			transition: background-color 0.2s cubic-bezier(.93,.12,0,.66);
+			color: whitesmoke;
+			}
+
+			nav .navbar-brand {
+				color: inherit;
+			}
+
+			.ele {
+				box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+				background-color: #fff;
+				color: black;
+			}
+
+			.navbar svg {
+				margin-bottom: 2px;
+				margin-right: 10px;
+			}
+
+			.navbar ul {
+				display: flex;
+				flex-grow: 1;
+				justify-content: end;
+				text-decoration: none
+			}
+
+			li {
+				list-style: none;
+			}
+			.nav-link {
+				color:rgb(58, 57, 144)
+			}
+			.nav-link.active {
+				color: rgb(5, 3, 148);
+				border-bottom: 2px solid #367bb7;;
+			}
+			header {
+				height: 100vh;
+				min-height: 40rem;
+				padding-top: 4.5rem;
+				padding-bottom: 0;
+				background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("https://startbootstrap.github.io/startbootstrap-creative/assets/img/bg-masthead.jpg");
+				background-position: center;
+				background-repeat: no-repeat;
+				background-attachment: scroll;
+				background-size: cover
+			}
+
+			section {
+				padding: 8rem 0px;
+			}
+
+			.portfolio-box {
+				position: relative;
+				display: block;
+			}
+
+			.portfolio-box-caption {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				bottom: 0;
+				text-align: center;
+				opacity: 0;
+				color: #fff;
+				background-color: #0d6dfdda;
+				/*background: rgba(44, 30, 231, 0.9);*/
+				transition: opacity 0.25s ease;
+				text-align: center;
+			}
+
+			.portfolio-box-caption:hover {
+				opacity: 1;
+			}
+		</style>
+		<script src="./main.js"></script>
+  </head>
+  <body>
+    <nav class="navbar bg-transparent fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-code-square" viewBox="0 0 16 16">
+						<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+						<path d="M6.854 4.646a.5.5 0 0 1 0 .708L4.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0zm2.292 0a.5.5 0 0 0 0 .708L11.793 8l-2.647 2.646a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708 0z"/>
+					</svg>
+					Manipulacion del DOM y Scroll
+				</a>		
+				<ul class="me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#about">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#services">Servicios</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#portfolio">Portfolio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#contact">Contacto</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<header id="about">
+			<div class="container h-100">
+				<div class="row h-100 align-items-center justify-content-center text-center">
+					<div class="col-12 align-self-end">
+						<h1 class="text-uppercase text-white font-height-bold">
+							Manipulacion del DOM Ejemplos
+						</h1>
+						<hr class="divider my-4">
+					</div>
+					<div class="col-12 align-self-start">
+						<p class="text-white-mb-5">
+							Varios ejemplos de la manipulacion del DOM y algunos eventos
+						</p>
+						<a href="#" class="btn btn-primary btn-lg" onclick="btnClick(this)">get start!</a>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section id="services" class="bg-primary">
+			<div class="container">
+				<div class="row justify-content-center text-center">
+					<div class="col-12">
+						<h2 class="text-white">Todo lo que necesitas en un unico proveedor</h2>
+						<hr class="divider light my-4">
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat rem iure sit tenetur itaque, qui saepe perspiciatis aliquam ad officiis maxime amet quae vero veritatis est reprehenderit labore delectus laborum?</p>
+						<a href="#" class="btn btn-secondary btn-lg">Mas info</a>
+					</div>
+					<div class="col-12 more-content"></div>
+				</div>
+			</div>
+		</section>
+
+		<section id="portfolio" class="">
+			<div class="container-fluid p-0">
+				<div class="row g-0">
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/1.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/1.jpg" alt="...">
+										<div class="portfolio-box-caption">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/2.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/2.jpg" alt="...">
+										<div class="portfolio-box-caption">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/3.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/3.jpg" alt="...">
+										<div class="portfolio-box-caption">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/4.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/4.jpg" alt="...">
+										<div class="portfolio-box-caption">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/5.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/5.jpg" alt="...">
+										<div class="portfolio-box-caption">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+						<div class="col-lg-4 col-sm-6">
+								<a class="portfolio-box" href="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/fullsize/6.jpg">
+										<img class="img-fluid" src="https://startbootstrap.github.io/startbootstrap-creative/assets/img/portfolio/thumbnails/6.jpg" alt="...">
+										<div class="portfolio-box-caption p-3">
+												<div class="project-category text-white-50">Categoria</div>
+												<div class="project-name">Proyecto de la categoria</div>
+										</div>
+								</a>
+						</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact">
+			<div class="container">
+				<div class="row justify-content-center">
+						<div class="col-lg-8 text-center">
+								<h2 class="mt-0">Let's Get In Touch!</h2>
+								<hr class="divider my-4">
+								<p class="text-muted mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+								<svg class=" mb-3 text-muted" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32"><path fill="currentColor" d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"></path></svg>
+								<div>+1 (555) 123-4567</div>
+						</div>
+						<div class="col-lg-4 mr-auto text-center">
+								<svg class="mb-3 text-muted" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="32"><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg>
+								<a class="d-block" href="mailto:contact@yourwebsite.com">contact@yourwebsite.com</a>
+						</div>
+				</div>
+		</div>
+		</section>
+
+
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script> -->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
